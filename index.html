@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Meme Generator</title>
+</head>
+
+<!-- TODO: add onload and make it functional -->
+
+<body>
+
+    <!-- TODO: define CSS for the entire body, starting from gallery
+    then going to the editor, including display none for relevant sections/divs
+example: pressing on about would display (block?) the about and display none the other parts
+and vice versa -->
+
+    <header class="main-header flex space-between">
+        <div class="logo">
+            <img src="logo/LOGO.png" alt="memegen-logo">
+        </div>
+        <nav class="main-nav">
+            <ul class="main-menu flex clean-list"></ul>
+            <li><a href="#" onclick="onDisplayGallery()">Gallery</a></li>
+            <li><a href="#" onclick="onDisplayAbout()">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <!-- TODO: make the canvas recieve a given img from the gallery, in the process
+        it would display the canvas and the editor -->
+        <section class="canvas">
+
+            <canvas id="my-canvas" height="650" width="650">
+            </canvas>
+
+        </section>
+
+        <section class="editor">
+            <input class="memetxt" type="text" placeholder="Type your text here">
+            <button>Next/Prev line</button>
+            <button>Add line</button>
+            <button>Delete Line</button>
+            <button>A+</button>
+            <button>A-</button>
+            <button>align left</button>
+            <button>align center</button>
+            <button>align right</button>
+            <input class="stroke-color" type="color" onchange="setStrokeColor(this.value)" value="#FFC0CB">
+            <button>font family</button>
+        </section>
+
+    </main>
+
+    <!-- TODO: make the canvas recieve a given img from the gallery, in the process
+        it would display the canvas and the editor -->
+    <section class="gallery">
+
+        <img src="memes/1.jpg" alt="meme1">
+        <img src="memes/1.jpg" alt="meme2">
+        <img src="memes/1.jpg" alt="meme3">
+        <img src="memes/1.jpg" alt="meme4">
+        <img src="memes/1.jpg" alt="meme5">
+        <img src="memes/1.jpg" alt="meme6">
+        <img src="memes/1.jpg" alt="meme7">
+        <img src="memes/1.jpg" alt="meme8">
+        <img src="memes/1.jpg" alt="meme9">
+        <img src="memes/1.jpg" alt="meme10">
+        <img src="memes/1.jpg" alt="meme11">
+        <img src="memes/1.jpg" alt="meme12">
+        <img src="memes/1.jpg" alt="meme13">
+        <img src="memes/1.jpg" alt="meme14">
+        <img src="memes/1.jpg" alt="meme15">
+        <img src="memes/1.jpg" alt="meme16">
+        <img src="memes/1.jpg" alt="meme17">
+        <img src="memes/1.jpg" alt="meme18">
+
+    </section>
+    
+    <section class="about">
+        oren danon
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi, ratione.
+    </section>
+
+    <footer>
+        <h1>memegen</h1>
+        <p>all rights to oren danon</p>
+    </footer>
+
+    <script src="js/service/storage.js"></script>
+    <script src="js/service/galleryService.js"></script>
+    <script src="js/service/memeService.js"></script>
+    <script src="js/galleryController.js"></script>
+    <script src="js/memeController.js"></script>
+</body>
+
+</html>
