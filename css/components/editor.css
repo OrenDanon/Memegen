@@ -1,0 +1,7 @@
+.canvas {
+    display: block;
+    margin: auto;
+    background-color: var(--clr3);
+    border: 1px solid black;
+    cursor: crosshair;
+}

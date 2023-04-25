@@ -11,7 +11,7 @@
 
 <!-- TODO: add onload and make it functional -->
 
-<body>
+<body onload="init()">
 
     <!-- TODO: define CSS for the entire body, starting from gallery
     then going to the editor, including display none for relevant sections/divs
@@ -20,7 +20,10 @@ and vice versa -->
 
     <header class="main-header flex space-between">
         <div class="logo">
-            <img src="logo/LOGO.png" alt="memegen-logo">
+            <h1>
+                logo
+            </h1>
+            <!-- <img src="logo/LOGO.png" alt="memegen-logo"> -->
         </div>
         <nav class="main-nav">
             <ul class="main-menu flex clean-list"></ul>
@@ -30,17 +33,11 @@ and vice versa -->
         </nav>
     </header>
 
-    <main class="main-content">
-        <!-- TODO: make the canvas recieve a given img from the gallery, in the process
+
+    <!-- preperation for actual canvas -->
+    <!-- TODO: make the canvas recieve a given img from the gallery, in the process
         it would display the canvas and the editor -->
-        <section class="canvas">
-
-            <canvas id="my-canvas" height="650" width="650">
-            </canvas>
-
-        </section>
-
-        <section class="editor">
+        <!-- <section class="editor-container">
             <input class="memetxt" type="text" placeholder="Type your text here">
             <button>Next/Prev line</button>
             <button>Add line</button>
@@ -52,44 +49,71 @@ and vice versa -->
             <button>align right</button>
             <input class="stroke-color" type="color" onchange="setStrokeColor(this.value)" value="#FFC0CB">
             <button>font family</button>
-        </section>
+        </section> -->
+        
+        
+        
+        <!-- demo canvas to be modified, template above is more likely what it'll look like -->
+        <main class="main-content">
 
+            <nav>
+                <input type="color" class="stroke-color" onchange="setFillColor(this.value)">
+                <input type="color" class="fill-color" onchange="setStrokeColor(this.value)">
+                <select name="shapes" class="shapes" onchange="setShape(this.value)">
+                    <option value="rect">Rectangle</option>
+                    <option value="triangle">Triangle</option>
+                    <option value="line">Line</option>
+                    <option value="arc">Circle</option>
+                    <option value="text">Text</option>
+                    <option value="pencil">Pencil</option>
+                </select>
+                <button onclick="saveCanvas()">💾</button>
+                <button onclick="clearCanvas()">🚮</button>
+            </nav>
+            
+            <div class="canvas-container">
+                <canvas class="canvas" height="250" width="250" onclick="draw(event)">
+                </canvas>
+            </div>
+            
     </main>
 
-    <!-- TODO: make the canvas recieve a given img from the gallery, in the process
-        it would display the canvas and the editor -->
-    <section class="gallery">
+
+     <!-- TODO: make the canvas recieve a given img from the gallery, in the process
+     it would display the canvas and the editor -->
+
+    <!-- <section class="gallery-container">
 
         <img src="memes/1.jpg" alt="meme1">
-        <img src="memes/1.jpg" alt="meme2">
-        <img src="memes/1.jpg" alt="meme3">
-        <img src="memes/1.jpg" alt="meme4">
-        <img src="memes/1.jpg" alt="meme5">
-        <img src="memes/1.jpg" alt="meme6">
-        <img src="memes/1.jpg" alt="meme7">
-        <img src="memes/1.jpg" alt="meme8">
-        <img src="memes/1.jpg" alt="meme9">
-        <img src="memes/1.jpg" alt="meme10">
-        <img src="memes/1.jpg" alt="meme11">
-        <img src="memes/1.jpg" alt="meme12">
-        <img src="memes/1.jpg" alt="meme13">
-        <img src="memes/1.jpg" alt="meme14">
-        <img src="memes/1.jpg" alt="meme15">
-        <img src="memes/1.jpg" alt="meme16">
-        <img src="memes/1.jpg" alt="meme17">
-        <img src="memes/1.jpg" alt="meme18">
+        <img src="memes/2.jpg" alt="meme2">
+        <img src="memes/3.jpg" alt="meme3">
+        <img src="memes/4.jpg" alt="meme4">
+        <img src="memes/5.jpg" alt="meme5">
+        <img src="memes/6.jpg" alt="meme6">
+        <img src="memes/7.jpg" alt="meme7">
+        <img src="memes/8.jpg" alt="meme8">
+        <img src="memes/9.jpg" alt="meme9">
+        <img src="memes/10.jpg" alt="meme10">
+        <img src="memes/11.jpg" alt="meme11">
+        <img src="memes/12.jpg" alt="meme12">
+        <img src="memes/13.jpg" alt="meme13">
+        <img src="memes/14.jpg" alt="meme14">
+        <img src="memes/15.jpg" alt="meme15">
+        <img src="memes/16.jpg" alt="meme16">
+        <img src="memes/17.jpg" alt="meme17">
+        <img src="memes/18.jpg" alt="meme18">
 
-    </section>
-    
-    <section class="about">
+    </section> -->
+
+    <!-- <section class="about-container">
         oren danon
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi, ratione.
-    </section>
+    </section> -->
 
-    <footer>
+    <!-- <footer class="footer-container">
         <h1>memegen</h1>
         <p>all rights to oren danon</p>
-    </footer>
+    </footer> -->
 
     <script src="js/service/storage.js"></script>
     <script src="js/service/galleryService.js"></script>

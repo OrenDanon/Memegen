@@ -1,0 +1,5 @@
+.main-header {
+    height: 130px;
+    background-color: var(--clr2);
+    border-block-end: 1px solid black;
+}

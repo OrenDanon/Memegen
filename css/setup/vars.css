@@ -1,0 +1,20 @@
+:root {
+    /* Palette */
+    --clr1: #3892fa;
+    --clr2: #ff8800;
+    --clr3: #9c9c9c;
+
+    /* Layout */
+    /* --layout-padding: 1.25rem;
+    --site-width: max-content;
+    --l: 1060px;
+    --m: 860px;
+    --s: 600px; */
+
+    /* Card Layout */
+    /* clp = card laypout padding */
+
+    /* --clp-side: 80px;
+    --clp-center: 60px;
+    --clp-bottom: 60px; */
+}
