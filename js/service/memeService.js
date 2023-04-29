@@ -3,24 +3,24 @@
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 2, 'baby': 4, 'dog': 2, 'men': 11, 'president': 3, 'comics': 1 }
 
 var gImgs = [
-{ id: 1, url: 'img/1.jpg', keywords: ['funny', 'president', 'men'] },
-{ id: 2, url: 'img/2.jpg', keywords: ['funny', 'dog'] },
-{ id: 3, url: 'img/3.jpg', keywords: ['funny', 'dog', 'baby'] },,
-{ id: 4, url: 'img/4.jpg', keywords: ['funny', 'cat'] },
-{ id: 5, url: 'img/5.jpg', keywords: ['funny', 'baby'] },
-{ id: 6, url: 'img/6.jpg', keywords: ['funny', 'men'] },
-{ id: 7, url: 'img/7.jpg', keywords: ['funny', 'baby'] },
-{ id: 8, url: 'img/8.jpg', keywords: ['funny', 'men'] },
-{ id: 9, url: 'img/9.jpg', keywords: ['funny', 'baby'] },
-{ id: 10, url: 'img/10.jpg', keywords: ['funny', 'president', 'men'] },
-{ id: 11, url: 'img/11.jpg', keywords: ['funny', 'men'] },
-{ id: 12, url: 'img/12.jpg', keywords: ['funny', 'men'] },
-{ id: 13, url: 'img/13.jpg', keywords: ['funny', 'men'] },
-{ id: 14, url: 'img/14.jpg', keywords: ['funny', 'men'] },
-{ id: 15, url: 'img/15.jpg', keywords: ['funny', 'men'] },
-{ id: 16, url: 'img/16.jpg', keywords: ['funny', 'men'] },
-{ id: 17, url: 'img/17.jpg', keywords: ['funny', 'president', 'men'] },
-{ id: 18, url: 'img/18.jpg', keywords: ['funny', 'comics'] }
+    { id: 1, url: 'memes/1.jpg', keywords: ['funny', 'president', 'men'] },
+    { id: 2, url: 'memes/2.jpg', keywords: ['funny', 'dog'] },
+    { id: 3, url: 'memes/3.jpg', keywords: ['funny', 'dog', 'baby'] },
+    { id: 4, url: 'memes/4.jpg', keywords: ['funny', 'cat'] },
+    { id: 5, url: 'memes/5.jpg', keywords: ['funny', 'baby'] },
+    { id: 6, url: 'memes/6.jpg', keywords: ['funny', 'men'] },
+    { id: 7, url: 'memes/7.jpg', keywords: ['funny', 'baby'] },
+    { id: 8, url: 'memes/8.jpg', keywords: ['funny', 'men'] },
+    { id: 9, url: 'memes/9.jpg', keywords: ['funny', 'baby'] },
+    { id: 10, url: 'memes/10.jpg', keywords: ['funny', 'president', 'men'] },
+    { id: 11, url: 'memes/11.jpg', keywords: ['funny', 'men'] },
+    { id: 12, url: 'memes/12.jpg', keywords: ['funny', 'men'] },
+    { id: 13, url: 'memes/13.jpg', keywords: ['funny', 'men'] },
+    { id: 14, url: 'memes/14.jpg', keywords: ['funny', 'men'] },
+    { id: 15, url: 'memes/15.jpg', keywords: ['funny', 'men'] },
+    { id: 16, url: 'memes/16.jpg', keywords: ['funny', 'men'] },
+    { id: 17, url: 'memes/17.jpg', keywords: ['funny', 'president', 'men'] },
+    { id: 18, url: 'memes/18.jpg', keywords: ['funny', 'comics'] }
 ];
 
 var gMeme = {
@@ -28,18 +28,104 @@ var gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
-            txt: '',
+            txt: 'Add your text here',
             size: 20,
             align: 'left',
-            color: 'red'
+            strokeColor: 'red',
+            fillColor: 'black',
+            fontFamily: 'Impact',
+            offsetX: 120,
+            offsetY: 30
+        },
+        {
+            txt: 'Add your text here',
+            size: 20,
+            align: 'left',
+            strokeColor: 'red',
+            fillColor: 'black',
+            fontFamily: 'Impact',
+            offsetX: 120,
+            offsetY: 400
         }
     ]
+}
+
+function setgMemeImg(elImgId) {
+    gMeme.selectedImgId = elImgId
 }
 
 function getMeme() {
     return gMeme
 }
 
-function txtLine(txt) {
-    gMeme.lines[1].txt = txt
+function getImgs() {
+    return gImgs
+}
+
+
+function addLine() {
+    gMeme.lines.push(
+        {
+            txt: 'Add your text here',
+            size: 20,
+            align: 'left',
+            strokeColor: 'red',
+            fillColor: 'black',
+            fontFamily: 'Impact',
+            offsetX: 120,
+            offsetY: gCanvasHeight / 2
+        })
+        gMeme.selectedLineIdx = gMeme.lines.length - 1
+    }
+
+    function txtLine(txt) {
+        gMeme.lines[gMeme.selectedLineIdx].txt = txt
+    }
+    
+function nextLine(idx) {
+    if (idx >= 0) {
+        gMeme.selectedLineIdx = idx;
+        return;
+    }
+    if (gMeme.selectedLineIdx === gMeme.lines.length - 1) {
+        gMeme.selectedLineIdx = 0;
+    } else {
+        gMeme.selectedLineIdx++;
+    }
+}
+
+function deleteLine() {
+    gMeme.lines[gMeme.selectedLineIdx].txt = ''
+}
+
+function allignRight(value) {
+    gMeme.lines[gMeme.selectedLineIdx].align = value
+}
+
+function allignCenter(value) {
+    gMeme.lines[gMeme.selectedLineIdx].align = value
+}
+
+function allignLeft(value) {
+    gMeme.lines[gMeme.selectedLineIdx].align = value
+}
+
+function setFillColor(fillColor) {
+    gMeme.lines[gMeme.selectedLineIdx].fillColor = fillColor
+}
+
+function setStrokeColor(strokeColor) {
+    gMeme.lines[gMeme.selectedLineIdx].strokeColor = strokeColor
+}
+
+function txtSizeDecrease() {
+    gMeme.lines[gMeme.selectedLineIdx].size -= 3
+}
+
+function txtSizeIncrease() {
+    gMeme.lines[gMeme.selectedLineIdx].size += 3
+}
+
+function setFontFamily(fontFamily) {
+    gMeme.lines[gMeme.selectedLineIdx].fontFamily = fontFamily
 }

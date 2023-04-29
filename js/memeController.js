@@ -2,91 +2,109 @@
 
 let gElCanvas
 let gCtx
-let gSelectedImg
-let gText = ''
-let gPos = {
-    offsetX: 220,
-    offsetY: 30
-}
+let gCanvasWidth = 450
+let gCanvasHeight = 450
+
 
 function init() {
     gElCanvas = document.querySelector('.canvas')
     gCtx = gElCanvas.getContext('2d')
     console.log('gCtx', gCtx)
-    // addListeners()
+    renderMeme()
+    renderGallery()
+}
+
+function onSelectImg(elImgId) {
+    setgMemeImg(elImgId)
+    onDisplayEditor()
+    onHideGallery()
     renderMeme()
 }
 
 function renderMeme() {
+    gElCanvas = document.querySelector('.canvas')
+    gCtx = gElCanvas.getContext('2d')
     const meme = getMeme()
-    if(gSelectedImg) {
-        onSelectImg(gSelectedImg)
-        drawText(gText , gPos.offsetX, gPos.offsetY)
+    const elImg = new Image()
+    elImg.src = `memes/${meme.selectedImgId}.jpg`
+    elImg.onload = () => {
+        gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
+        meme.lines.forEach(line => {
+        gCtx.font = line.size + `px ` + line.fontFamily
+        gCtx.textAlign = line.align
+        gCtx.strokeStyle = line.strokeColor
+        gCtx.fillStyle = line.fillColor
+        let memeTxt = ''
+        if (line.txt) {
+            memeTxt = line.txt;
+        }
+        gCtx.fillText(memeTxt, line.offsetX, line.offsetY)
+        gCtx.strokeText(memeTxt, line.offsetX, line.offsetY)
+    })
     }
 }
 
-function drawText(text, offsetX, offsetY) {
-    gCtx.lineWidth = 2
-    gCtx.strokeStyle = 'white'
-    gCtx.fillStyle = 'black'
-    gCtx.font = '25px Arial'
-    gCtx.textAlign = 'center'
-    gCtx.textBaseline = 'middle'
 
-    gCtx.fillText(text, offsetX, offsetY)
-    gCtx.strokeText(text, offsetX, offsetY)
-}
-
-function onTxtLine(txt) {
-    gText = txt
-    // txtLine(txt)
+function onAddLine() {
+    addLine()
     renderMeme()
 }
 
 
-function resizeCanvas() {
-    const elContainer = document.querySelector('.canvas-container')
-    gElCanvas.width = elContainer.offsetWidth
-    gElCanvas.height = elContainer.offsetHeight
+function onNextLine(idx) {
+    nextLine(idx)
+    renderMeme()
 }
 
 
-function addListeners() {
-    addMouseListeners()
-    addTouchListeners()
-    window.addEventListener('resize', () => {
-        init()
-    })
-}
-
-function addMouseListeners() {
-    gElCanvas.addEventListener('mousedown', onDown)
-    gElCanvas.addEventListener('mousemove', onMove)
-    gElCanvas.addEventListener('mouseup', onUp)
-}
-
-function addTouchListeners() {
-    gElCanvas.addEventListener('touchstart', onDown)
-    gElCanvas.addEventListener('touchmove', onMove)
-    gElCanvas.addEventListener('touchend', onUp)
+function onDeleteLine() {
+    deleteLine()
+    renderMeme()
 }
 
 
-
-function setFillColor(fillColor) {
+function onAllignLeft(value) {
+    allignLeft(value)
+    renderMeme()
 }
 
-function setStrokeColor(strokeColor) {
+function onAllignCenter(value) {
+    allignCenter(value)
+    renderMeme()
+}
+
+function onAllignRight(value) {
+    allignRight(value)
+    renderMeme()
+}
+
+function onSetFillColor(fillColor) {
+    setFillColor(fillColor)
+    renderMeme()
+}
+
+function onSetStrokeColor(strokeColor) {
+    setStrokeColor(strokeColor)
+    renderMeme()
 }
 
 
-function drawRect(x, y) {
-    gCtx.strokeStyle = gCurrShape.strokeColor
-    gCtx.strokeRect(x, y, gCurrShape.dX, gCurrShape.dY)
-    gCtx.fillStyle = gCurrShape.fillColor
-    gCtx.fillRect(x, y, gCurrShape.dX, gCurrShape.dY)
+function onSetFontFamily(fontFamily) {
+    setFontFamily(fontFamily)
+    renderMeme()
 }
 
-function clearCanvas() {
-    gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
+function onTxtSizeIncrease() {
+    txtSizeIncrease()
+    renderMeme()
+}
+
+function onTxtSizeDecrease() {
+    txtSizeDecrease()
+    renderMeme()
+}
+
+function onTxtLine(txt) {
+    txtLine(txt)
+    renderMeme()
 }

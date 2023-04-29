@@ -28,61 +28,37 @@ and vice versa -->
         </nav>
     </header>
 
+    <main class="main-content hidden">
 
-    <!-- preperation for actual canvas -->
-    <!-- TODO: make the canvas recieve a given img from the gallery, in the process
-        it would display the canvas and the editor -->
-        
-        
-        <main class="main-content hidden">
-            
-            
-            <section class="editor-container">
-                <input class="memetxt" type="text" placeholder="Type your text here" oninput="onTxtLine(this.value)">
-                <button>Next/Prev line</button>
-                <button>Add line</button>
-                <button>Delete Line</button>
-                <button>A+</button>
-                <button>A-</button>
-                <button>align left</button>
-                <button>align center</button>
-                <button>align right</button>
-                <input class="stroke-color" type="color" onchange="setStrokeColor(this.value)" value="#FFC0CB">
-                <button>font family</button>
-            </section>
 
-            <div class="canvas-container">
-                <canvas class="canvas" height="450" width="450">
-                </canvas>
-            </div>
-            
+        <section class="editor-container">
+            <input class="memetxt" type="text" placeholder="Type your text here" oninput="onTxtLine(this.value)">
+            <button onclick="onNextLine()">nextline</button>
+            <button onclick="onAddLine()">addline</button>
+            <button onclick="onDeleteLine()">deleteline</button>
+            <button onclick="onTxtSizeIncrease()">px+</button>
+            <button onclick="onTxtSizeDecrease()">px-</button>
+            <button onclick="onAllignLeft(this.value)" value="start">left</button>
+            <button onclick="onAllignCenter(this.value)" value="center">center</button>
+            <button onclick="onAllignRight(this.value)" value="end">right</button>
+            <input class="stroke-color" type="color" oninput="onSetStrokeColor(this.value)">
+            <input class="fill-color" type="color" oninput="onSetFillColor(this.value)">
+            <select name="font-family" class="font-family" onchange="onSetFontFamily(this.value)">
+            <option value="Impact">Impact</option>
+            <option value="Courier New">Courier New</option>
+            <option value="Consolas">Consolas</option>
+            </select>
+        </section>
+
+        <div class="canvas-container">
+            <canvas class="canvas" height="450" width="450">
+            </canvas>
+        </div>
+
     </main>
 
 
-     <!-- TODO: make the canvas recieve a given img from the gallery, in the process
-     it would display the canvas and the editor -->
-
     <section class="gallery-container gallery-grid">
-
-        <img class="img1" src="memes/1.jpg" alt="meme1" onclick="onSelectImg(this)">
-        <img src="memes/2.jpg" alt="meme2" onclick="onSelectImg(this)">
-        <img src="memes/3.jpg" alt="meme3" onclick="onSelectImg(this)">
-        <img src="memes/4.jpg" alt="meme4" onclick="onSelectImg(this)">
-        <img src="memes/5.jpg" alt="meme5" onclick="onSelectImg(this)">
-        <img src="memes/6.jpg" alt="meme6" onclick="onSelectImg(this)">
-        <img src="memes/7.jpg" alt="meme7" onclick="onSelectImg(this)">
-        <img src="memes/8.jpg" alt="meme8" onclick="onSelectImg(this)">
-        <img src="memes/9.jpg" alt="meme9" onclick="onSelectImg(this)">
-        <img src="memes/10.jpg" alt="meme10" onclick="onSelectImg(this)">
-        <img src="memes/11.jpg" alt="meme11" onclick="onSelectImg(this)">
-        <img src="memes/12.jpg" alt="meme12" onclick="onSelectImg(this)">
-        <img src="memes/13.jpg" alt="meme13" onclick="onSelectImg(this)">
-        <img src="memes/14.jpg" alt="meme14" onclick="onSelectImg(this)">
-        <img src="memes/15.jpg" alt="meme15" onclick="onSelectImg(this)">
-        <img src="memes/16.jpg" alt="meme16" onclick="onSelectImg(this)">
-        <img src="memes/17.jpg" alt="meme17" onclick="onSelectImg(this)">
-        <img src="memes/18.jpg" alt="meme18" onclick="onSelectImg(this)">
-
     </section>
 
     <!-- <section class="about-container">
@@ -96,7 +72,6 @@ and vice versa -->
     </footer>
 
     <script src="js/service/storage.js"></script>
-    <script src="js/service/galleryService.js"></script>
     <script src="js/service/memeService.js"></script>
     <script src="js/galleryController.js"></script>
     <script src="js/memeController.js"></script>
