@@ -9,51 +9,75 @@
     <title>Meme Generator</title>
 </head>
 
-<!-- TODO: add onload and make it functional -->
-
 <body onload="init()">
 
-    <!-- TODO: define CSS for the entire body, starting from gallery
-    then going to the editor, including display none for relevant sections/divs
-example: pressing on about would display (block?) the about and display none the other parts
-and vice versa -->
-
     <header class="main-header flex space-between align-center">
-        <div class="logo"><img src="logo/LOGO.png" alt="memegen-logo"></div>
+        <div class="logo"><img src="logo/LOGO.png" alt="memegen-logo" onclick="onDisplayGallery()"></div>
         <nav class="main-nav">
-            <ul class="main-menu flex clean-list"></ul>
-            <li><a href="#" onclick="onDisplayGallery()">Gallery</a></li>
-            <li><a href="#" onclick="onDisplayAbout()">About</a></li>
+            <ul class="main-menu flex clean-list">
+                <li><a href="#" onclick="onDisplayGallery()" class="flex align-center">Gallery</a></li>
+                <li><a href="#" onclick="onDisplayAbout()" class="flex align-center">About</a></li>
             </ul>
         </nav>
     </header>
 
     <main class="main-content hidden">
 
-
-        <section class="editor-container">
-            <input class="memetxt" type="text" placeholder="Type your text here" oninput="onTxtLine(this.value)">
-            <button onclick="onNextLine()">nextline</button>
-            <button onclick="onAddLine()">addline</button>
-            <button onclick="onDeleteLine()">deleteline</button>
-            <button onclick="onTxtSizeIncrease()">px+</button>
-            <button onclick="onTxtSizeDecrease()">px-</button>
-            <button onclick="onAllignLeft(this.value)" value="start">left</button>
-            <button onclick="onAllignCenter(this.value)" value="center">center</button>
-            <button onclick="onAllignRight(this.value)" value="end">right</button>
-            <input class="stroke-color" type="color" oninput="onSetStrokeColor(this.value)">
-            <input class="fill-color" type="color" oninput="onSetFillColor(this.value)">
-            <select name="font-family" class="font-family" onchange="onSetFontFamily(this.value)">
-            <option value="Impact">Impact</option>
-            <option value="Courier New">Courier New</option>
-            <option value="Consolas">Consolas</option>
-            </select>
-        </section>
-
         <div class="canvas-container">
             <canvas class="canvas" height="450" width="450">
             </canvas>
         </div>
+
+        <section class="editor-container">
+            <input class="memetxt" type="text" placeholder="Type your text here" oninput="onTxtLine(this.value)">
+            <section class="editor-buttons">
+                <div class="button-row">
+                    <button onclick="onNextLine()">
+                        <img src="icons/up-and-down-opposite-double-arrows-side-by-side.png" alt="Next line button">
+                    </button>
+                    <button onclick="onAddLine()">
+                        <img src="icons/add.png" alt="Add line button">
+                    </button>
+                    <button onclick="onDeleteLine()">
+                        <img src="icons/trash.png" alt="Delete line button">
+                    </button>
+                </div>
+                <div class="button-row">
+                    <button onclick="onTxtSizeIncrease()">
+                        <img src="icons/increase font - icon.png" alt="Increase font button">
+                    </button>
+                    <button onclick="onTxtSizeDecrease()"><img src="icons/decrease font - icon.png"
+                            alt="Decrease font button">
+                    </button>
+                </div>
+                <div class="button-row">
+                    <button onclick="onAllignLeft(this.value)" value="start">
+                        <img src="icons/align-to-left.png" alt="Align to left button"></button>
+                    <button onclick="onAllignCenter(this.value)" value="center">
+                        <img src="icons/center-text-alignment.png" alt="Align to center button">
+                    </button>
+                    <button onclick="onAllignRight(this.value)" value="end">
+                        <img src="icons/align-to-right.png" alt="Align to right button">
+                    </button>
+                </div>
+                <div class="button-row">
+                    <button>
+                        <img src="icons/text stroke.png" alt="Text border color">
+                        <input class="stroke-color" type="color" oninput="onSetStrokeColor(this.value)">
+                    </button>
+                    <button>
+                        <img src="icons/paint-board-and-brush.png" alt="Text color button">
+                        <input class="fill-color" type="color" oninput="onSetFillColor(this.value)">
+                    </button>
+                    <select name="font-family" class="font-family" onchange="onSetFontFamily(this.value)">
+                        <option value="Impact">Impact</option>
+                        <option value="Courier New">Courier New</option>
+                        <option value="Consolas">Consolas</option>
+                    </select>
+                </div>
+            </section>
+        </section>
+
 
     </main>
 
@@ -61,14 +85,30 @@ and vice versa -->
     <section class="gallery-container gallery-grid">
     </section>
 
-    <!-- <section class="about-container">
-        oren danon
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi, ratione.
-    </section> -->
+    <section class="about-container hidden">
+        <h1>Meme generator by Oren Danon</h1>
+        <p>
+            This meme generator was created by Oren Danon
+            I am 23 years old learning Full Stack Development in Coding Academy!
+        </p>
+        <div class="about-images">
+            <div class="me">
+                <img src="about-img/WhatsApp Image 2023-01-26 at 13.53.41.jpeg" alt="Me in my car">
+            </div>
+            <div class="me">
+                <img src="about-img/WhatsApp Image 2023-01-26 at 13.54.10.jpeg" alt="Me at home">
+            </div>
+            <div class="me">
+                <img src="about-img/WhatsApp Image 2023-01-26 at 13.56.55.jpeg" alt="Me in Barcelona">
+            </div>
+        </div>
+            <footer>
+            <a href="https://www.linkedin.com/in/oren-danon-4100a3228/" target="_blank">My Linkedin Account</a>
+        </footer>
+    </section>
 
     <footer class="footer-container">
-        <h1>memegen</h1>
-        <p>all rights to oren danon</p>
+        <p>©All rights reserved to Oren Danon - 2023</p>
     </footer>
 
     <script src="js/service/storage.js"></script>

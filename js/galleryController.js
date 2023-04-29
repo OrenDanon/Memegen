@@ -15,6 +15,31 @@ function onDisplayEditor() {
     elEditor.classList.add('editor-grid')
 }
 
+function onHideEditor() {
+    const elEditor = document.querySelector('.main-content')
+    elEditor.classList.remove('editor-grid')
+    elEditor.classList.add('hidden')
+}
+
+function onDisplayAbout() {
+    const elAbout = document.querySelector('.about-container')
+    elAbout.classList.remove('hidden')
+    onHideGallery()
+    onHideEditor()
+}
+
+function onHideAbout() {
+    const elAbout = document.querySelector('.about-container')
+    elAbout.classList.add('hidden')
+}
+
+function onDisplayGallery() {
+    const elGallery = document.querySelector('.gallery-container')
+    elGallery.classList.remove('hidden')
+    elGallery.classList.add('gallery-grid')
+    onHideAbout()
+    onHideEditor()
+}
 
 function onHideGallery() {
     const elGallery = document.querySelector('.gallery-container')

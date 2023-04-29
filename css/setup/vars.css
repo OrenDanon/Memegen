@@ -1,15 +1,18 @@
 :root {
     /* Palette */
-    --clr1: #3892fa;
+    --clr1: #66a9f5;
     --clr2: #ff8800;
     --clr3: #9c9c9c;
+    --clr4: #ff5100;
 
     /* Layout */
-    /* --layout-padding: 1.25rem;
+    --layout-padding: 1.25rem;
     --site-width: max-content;
+
+    /*    
     --l: 1060px;
     --m: 860px;
-    --s: 600px; */
+    --s: 600px;  */
 
     /* Card Layout */
     /* clp = card laypout padding */
