@@ -15,7 +15,7 @@ function init() {
 }
 
 function onSelectImg(elImgId) {
-    setgMemeImg(elImgId)
+    resetMeme(elImgId)
     onDisplayEditor()
     onHideGallery()
     renderMeme()
@@ -30,17 +30,17 @@ function renderMeme() {
     elImg.onload = () => {
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
         meme.lines.forEach(line => {
-        gCtx.font = line.size + `px ` + line.fontFamily
-        gCtx.textAlign = line.align
-        gCtx.strokeStyle = line.strokeColor
-        gCtx.fillStyle = line.fillColor
-        let memeTxt = ''
-        if (line.txt) {
-            memeTxt = line.txt;
-        }
-        gCtx.fillText(memeTxt, line.offsetX, line.offsetY)
-        gCtx.strokeText(memeTxt, line.offsetX, line.offsetY)
-    })
+            gCtx.font = line.size + `px ` + line.fontFamily
+            gCtx.textAlign = line.align
+            gCtx.strokeStyle = line.strokeColor
+            gCtx.fillStyle = line.fillColor
+            let memeTxt = ''
+            if (line.txt) {
+                memeTxt = line.txt
+            }
+            gCtx.fillText(memeTxt, line.offsetX, line.offsetY)
+            gCtx.strokeText(memeTxt, line.offsetX, line.offsetY)
+        })
     }
 }
 
@@ -50,31 +50,18 @@ function onAddLine() {
     renderMeme()
 }
 
+function onAlign(value) {
+    align(value)
+    renderMeme()
+}
 
 function onNextLine(idx) {
     nextLine(idx)
     renderMeme()
 }
 
-
 function onDeleteLine() {
     deleteLine()
-    renderMeme()
-}
-
-
-function onAllignLeft(value) {
-    allignLeft(value)
-    renderMeme()
-}
-
-function onAllignCenter(value) {
-    allignCenter(value)
-    renderMeme()
-}
-
-function onAllignRight(value) {
-    allignRight(value)
     renderMeme()
 }
 
@@ -87,7 +74,6 @@ function onSetStrokeColor(strokeColor) {
     setStrokeColor(strokeColor)
     renderMeme()
 }
-
 
 function onSetFontFamily(fontFamily) {
     setFontFamily(fontFamily)
@@ -107,4 +93,9 @@ function onTxtSizeDecrease() {
 function onTxtLine(txt) {
     txtLine(txt)
     renderMeme()
+}
+
+function downloadImg(elLink) {
+    const imgContent = gElCanvas.toDataURL('image/jpeg')
+    elLink.href = imgContent
 }

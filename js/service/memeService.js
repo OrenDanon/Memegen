@@ -21,7 +21,7 @@ var gImgs = [
     { id: 16, url: 'memes/16.jpg', keywords: ['funny', 'men'] },
     { id: 17, url: 'memes/17.jpg', keywords: ['funny', 'president', 'men'] },
     { id: 18, url: 'memes/18.jpg', keywords: ['funny', 'comics'] }
-];
+]
 
 var gMeme = {
     selectedImgId: 1,
@@ -29,29 +29,25 @@ var gMeme = {
     lines: [
         {
             txt: 'Add your text here',
-            size: 20,
-            align: 'left',
-            strokeColor: 'red',
+            size: 28,
+            align: 'center',
+            strokeColor: 'white',
             fillColor: 'black',
             fontFamily: 'Impact',
-            offsetX: 120,
-            offsetY: 30
+            offsetX: 220,
+            offsetY: 50
         },
         {
             txt: 'Add your text here',
-            size: 20,
-            align: 'left',
-            strokeColor: 'red',
+            size: 28,
+            align: 'center',
+            strokeColor: 'white',
             fillColor: 'black',
             fontFamily: 'Impact',
-            offsetX: 120,
+            offsetX: 220,
             offsetY: 400
         }
     ]
-}
-
-function setgMemeImg(elImgId) {
-    gMeme.selectedImgId = elImgId
 }
 
 function getMeme() {
@@ -67,30 +63,59 @@ function addLine() {
     gMeme.lines.push(
         {
             txt: 'Add your text here',
-            size: 20,
-            align: 'left',
-            strokeColor: 'red',
+            size: 28,
+            align: 'center',
+            strokeColor: 'white',
             fillColor: 'black',
             fontFamily: 'Impact',
-            offsetX: 120,
+            offsetX: 200,
             offsetY: gCanvasHeight / 2
         })
         gMeme.selectedLineIdx = gMeme.lines.length - 1
     }
 
+    function resetMeme(elImgId) {
+        gMeme = {
+            selectedImgId: elImgId,
+            selectedLineIdx: 0,
+            lines: [
+                {
+                    txt: 'Add your text here',
+                    size: 28,
+                    align: 'center',
+                    strokeColor: 'white',
+                    fillColor: 'black',
+                    fontFamily: 'Impact',
+                    offsetX: 220,
+                    offsetY: 50
+                },
+                {
+                    txt: 'Add your text here',
+                    size: 28,
+                    align: 'center',
+                    strokeColor: 'white',
+                    fillColor: 'black',
+                    fontFamily: 'Impact',
+                    offsetX: 220,
+                    offsetY: 400
+                }
+            ]
+        }
+    }
+    
     function txtLine(txt) {
         gMeme.lines[gMeme.selectedLineIdx].txt = txt
     }
     
-function nextLine(idx) {
+    function nextLine(idx) {
     if (idx >= 0) {
         gMeme.selectedLineIdx = idx;
         return;
     }
     if (gMeme.selectedLineIdx === gMeme.lines.length - 1) {
-        gMeme.selectedLineIdx = 0;
+        gMeme.selectedLineIdx = 0
     } else {
-        gMeme.selectedLineIdx++;
+        gMeme.selectedLineIdx++
     }
 }
 
@@ -116,6 +141,10 @@ function setFillColor(fillColor) {
 
 function setStrokeColor(strokeColor) {
     gMeme.lines[gMeme.selectedLineIdx].strokeColor = strokeColor
+}
+
+function align(value){
+    gMeme.lines[gMeme.selectedLineIdx].align = value
 }
 
 function txtSizeDecrease() {

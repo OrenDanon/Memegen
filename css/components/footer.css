@@ -1,7 +1,7 @@
 .footer-container {
   display: flex;
   background-color: var(--clr2);
-  position: absolute;
+  position: relative;
   width: 100%;
   bottom: 0;
   justify-content: center;

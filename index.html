@@ -47,37 +47,41 @@
                         <img src="icons/increase font - icon.png" alt="Increase font button">
                     </button>
                     <button onclick="onTxtSizeDecrease()"><img src="icons/decrease font - icon.png"
-                            alt="Decrease font button">
+                        alt="Decrease font button">
                     </button>
                 </div>
                 <div class="button-row">
-                    <button onclick="onAllignLeft(this.value)" value="start">
+                    <button onclick="onAlign('right')">
                         <img src="icons/align-to-left.png" alt="Align to left button"></button>
-                    <button onclick="onAllignCenter(this.value)" value="center">
-                        <img src="icons/center-text-alignment.png" alt="Align to center button">
-                    </button>
-                    <button onclick="onAllignRight(this.value)" value="end">
-                        <img src="icons/align-to-right.png" alt="Align to right button">
-                    </button>
-                </div>
-                <div class="button-row">
-                    <button>
-                        <img src="icons/text stroke.png" alt="Text border color">
-                        <input class="stroke-color" type="color" oninput="onSetStrokeColor(this.value)">
-                    </button>
-                    <button>
-                        <img src="icons/paint-board-and-brush.png" alt="Text color button">
-                        <input class="fill-color" type="color" oninput="onSetFillColor(this.value)">
-                    </button>
-                    <select name="font-family" class="font-family" onchange="onSetFontFamily(this.value)">
-                        <option value="Impact">Impact</option>
-                        <option value="Courier New">Courier New</option>
-                        <option value="Consolas">Consolas</option>
-                    </select>
-                </div>
-            </section>
+                        <button onclick="onAlign('center')">
+                            <img src="icons/center-text-alignment.png" alt="Align to center button">
+                        </button>
+                        <button onclick="onAlign('left')">
+                            <img src="icons/align-to-right.png" alt="Align to right button">
+                        </button>
+                    </div>
+                    <div class="button-row">
+                        <button>
+                            <img src="icons/text stroke.png" alt="Text border color">
+                            <input class="stroke-color" type="color" oninput="onSetStrokeColor(this.value)">
+                        </button>
+                        <button>
+                            <img src="icons/paint-board-and-brush.png" alt="Text color button">
+                            <input class="fill-color" type="color" oninput="onSetFillColor(this.value)">
+                        </button>
+                        <select name="font-family" class="font-family" onchange="onSetFontFamily(this.value)">
+                            <option value="Impact">Impact</option>
+                            <option value="Courier New">Courier New</option>
+                            <option value="Consolas">Consolas</option>
+                        </select>
+                    </div>
+                    <div class="button-row">
+                        <button>
+                            <a href="#" class="button-download" onclick="downloadImg(this)" download="my-meme.jpg">Download</a>
+                        </button>
+                    </div>
+                </section>
         </section>
-
 
     </main>
 
@@ -102,7 +106,7 @@
                 <img src="about-img/WhatsApp Image 2023-01-26 at 13.56.55.jpeg" alt="Me in Barcelona">
             </div>
         </div>
-            <footer>
+        <footer>
             <a href="https://www.linkedin.com/in/oren-danon-4100a3228/" target="_blank">My Linkedin Account</a>
         </footer>
     </section>

@@ -4,8 +4,8 @@ function renderGallery() {
     const imgs = getImgs()
     const elGallery = document.querySelector('.gallery-container')
     const strHTML = imgs.map(img => `
-    <img src="${img.url}" onclick="onSelectImg(this.id)" alt="${img.keywords}" id="${img.id}">`)
-    elGallery.innerHTML = strHTML.join('')
+    <img src="${img.url}" onclick="onSelectImg(this.className)" alt="${img.keywords}" class="${img.id}">`)
+    elGallery.innerHTML += strHTML.join('')
 }
 
 
